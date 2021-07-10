@@ -8,7 +8,98 @@ import { useReducer } from "react";
 import { useEffect } from "react";
 
 function App() {
-  
+  const initialTodo = [
+    {
+      id: uuid(),
+      titel: "code 1010",
+      iscomplited: false,
+      tedad: 7,
+    },
+    {
+      id: uuid(),
+      titel: "code 1011",
+      iscomplited: false,
+      tedad: 8,
+    },
+    {
+      id: uuid(),
+      titel: "code 1012",
+      iscomplited: false,
+      tedad: 6,
+    },
+    {
+      id: uuid(),
+      titel: "code 1013",
+      iscomplited: false,
+      tedad: 13,
+    },
+    {
+      id: uuid(),
+      titel: "code 1014",
+      iscomplited: false,
+      tedad: 6,
+    },
+    {
+      id: uuid(),
+      titel: "code 1015",
+      iscomplited: false,
+      tedad: 10,
+    },
+    {
+      id: uuid(),
+      titel: "code 1016",
+      iscomplited: false,
+      tedad: 11,
+    },
+    {
+      id: uuid(),
+      titel: "code 1017",
+      iscomplited: false,
+      tedad: 10,
+    },
+    {
+      id: uuid(),
+      titel: "code 1018",
+      iscomplited: false,
+      tedad: 10,
+    },
+    {
+      id: uuid(),
+      titel: "code 1019",
+      iscomplited: false,
+      tedad: 11,
+    },
+    {
+      id: uuid(),
+      titel: "code 1020",
+      iscomplited: false,
+      tedad: 9,
+    },
+    {
+      id: uuid(),
+      titel: "code 1021",
+      iscomplited: false,
+      tedad: 11,
+    },
+    {
+      id: uuid(),
+      titel: "code 1022",
+      iscomplited: false,
+      tedad: 9,
+    },
+    {
+      id: uuid(),
+      titel: "code 1023",
+      iscomplited: false,
+      tedad: 10,
+    },
+    {
+      id: uuid(),
+      titel: "code 1024",
+      iscomplited: false,
+      tedad: 12,
+    },
+  ];
   const [todos, disspatchtodos] = useReducer(func, getInitial());
   function getInitial() {
     const jsonTodos = localStorage.getItem("todos");
@@ -99,3 +190,28 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
+
+// const newTodos = todos.map((todo) => {
+//   if (todo.id === todoId) {
+//     return { ...todos, iscomplited: !todo.iscomplited };
+//   } else {
+//     return todo;
+//   }
+// });
+
+/* {todos.map((todo) => (
+                      <Pagecontent handletuggles={handletuggle} todo={todo} key={uuid()} />
+                    ))} */
+
+// -------------------------
+// const [todos, setTodos] = useState(initialTodo);
+
+// function handletuggle(todoId) {
+//   const temptodos = [...todos];
+//   const foundedItem = temptodos.find((item) => {
+//     return item.id === todoId;
+//   });
+
+//   foundedItem.iscomplited = !foundedItem.iscomplited;
+//   setTodos(temptodos);
+// }
