@@ -100,10 +100,10 @@ function App() {
       tedad: 12,
     },
   ];
-  const [todos, disspatchtodos] = useReducer(func, [] , getInitial );
+  const [todos, disspatchtodos] = useReducer(func, getInitial() );
   function getInitial() {
     const jsonTodos = localStorage.getItem("todos");
-    return JSON.parse(jsonTodos);
+    return jsonTodos ?  JSON.parse(jsonTodos) : initialTodo;
   }
   function func(state, action) {
     switch (action.type) {
