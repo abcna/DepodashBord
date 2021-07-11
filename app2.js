@@ -100,11 +100,32 @@ function App() {
       tedad: 12,
     },
   ];
-  const [todos, disspatchtodos] = useReducer(func, getInitial() );
+  const [todos, disspatchtodos] = useReducer(func, getInitial());
   function getInitial() {
     const jsonTodos = localStorage.getItem("todos");
-    return jsonTodos ?  JSON.parse(jsonTodos) : initialTodo;
+    return jsonTodos ? JSON.parse(jsonTodos) : initialTodo;
   }
+  const initialforokhte = 0;
+  const [forokhte, setForokhte] = useState(getInitialForokhte);
+
+  useEffect(() => {
+    const TodosJson = JSON.stringify(forokhte);
+    localStorage.setItem("forokhte", TodosJson);
+  }, [forokhte]);
+
+  function getInitialForokhte() {
+    const jsonTodos = localStorage.getItem("forokhte");
+    return jsonTodos ? JSON.parse(jsonTodos) : 0;
+  }
+
+  function onclickfunc(op) {
+    if (op === "mos") {
+      setForokhte(forokhte - 1);
+    } else if (op === "manf") {
+      setForokhte(forokhte + 1);
+    }
+  }
+
   function func(state, action) {
     switch (action.type) {
       case "add": {
@@ -139,7 +160,7 @@ function App() {
           }
         });
       }
-      case "changestatus":
+
       case "changestatus": {
         return state.map((item) => {
           if (action.payload.id === item.id) {
@@ -175,6 +196,8 @@ function App() {
                         <Pagecontent
                           todo={todoitem}
                           disspatchtodos={disspatchtodos}
+                          setForokhte={setForokhte}
+                          forokhte={forokhte}
                         />
                       );
                     })}
@@ -183,6 +206,26 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+        <div style={{ marginTop: 50 }}>
+          {" "}
+          <h1>
+            {" "}
+            <button
+              class="w3-button w3-ripple w3-red"
+              onClick={() => onclickfunc("mos")}
+            >
+              -
+            </button>{" "}
+            <button
+              class="w3-button w3-ripple w3-yellow"
+              onClick={() => onclickfunc("manf")}
+            >
+              +
+            </button>{" "}
+            شما در مجموع <l1 style={{ color: "green" }}> {forokhte} </l1> شال و
+            <l1 type='number' style={{ color: "green" }} > {Number(forokhte) * 88000} </l1>  تومان فروخته اید
+          </h1>{" "}
         </div>
       </div>
     </body>

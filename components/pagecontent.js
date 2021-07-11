@@ -1,5 +1,17 @@
+import { func } from "prop-types";
 import React from "react";
-export default function Pagecontent({ todo, disspatchtodos }) {
+import { useEffect } from "react";
+export default function Pagecontent({
+  todo,
+  disspatchtodos,
+  setForokhte,
+  forokhte,
+}) {
+  function minestodo() {
+    disspatchtodos({ type: "mines", payload: todo }), setForokhte(forokhte + 1);
+  }
+ 
+
   return (
     <li className={todo.iscomplited ? "completed" : ""}>
       <div className="form-check">
@@ -16,7 +28,7 @@ export default function Pagecontent({ todo, disspatchtodos }) {
           />
           {todo.titel}
           <i className="input-helper"></i>
-          <div style={{fontSize:18}}> موجودی {todo.tedad} </div>
+          <div style={{ fontSize: 18 }}> موجودی {todo.tedad} </div>
         </label>
       </div>{" "}
       <i
@@ -42,7 +54,7 @@ export default function Pagecontent({ todo, disspatchtodos }) {
           borderRadius: 50,
           fontSize: 30,
         }}
-        onClick={() => disspatchtodos({ type: "mines", payload: todo })}
+        onClick={minestodo}
       >
         {" "}
         -{" "}
