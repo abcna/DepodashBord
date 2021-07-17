@@ -100,6 +100,7 @@ function App() {
       tedad: 12,
     },
   ];
+
   const [todos, disspatchtodos] = useReducer(func, getInitial());
   function getInitial() {
     const jsonTodos = localStorage.getItem("todos");
@@ -179,7 +180,11 @@ function App() {
     const TodosJson = JSON.stringify(todos);
     localStorage.setItem("todos", TodosJson);
   }, [todos]);
-
+ 
+    fetch("http://172.20.10.2:8000/")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+ 
   return (
     <body style={{ marginTop: 300 }}>
       <div className="page-content page-container" id="page-content">
@@ -224,7 +229,11 @@ function App() {
               +
             </button>{" "}
             شما در مجموع <l1 style={{ color: "green" }}> {forokhte} </l1> شال و
-            <l1 type='number' style={{ color: "green" }} > {Number(forokhte) * 88000} </l1>  تومان فروخته اید
+            <l1 type="number" style={{ color: "green" }}>
+              {" "}
+              {Number(forokhte) * 88000}{" "}
+            </l1>{" "}
+            تومان فروخته اید
           </h1>{" "}
         </div>
       </div>
